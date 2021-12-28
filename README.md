@@ -20,38 +20,33 @@ Installation Prerequisites
      192.168.35.X  hdfs-worker02.lab.example.com   
 ```
 
-### 1) cloning ansible files
- 	- `git clone https://github.com/mshgayar/hadoop.git`
-  	- `vim inventory`
+1) cloning ansible files
+  -	 `git clone https://github.com/mshgayar/hadoop.git`
+  -	 `vim inventory`
  
 
     [datanodes]
             hdfs-worker01.lab.example.com 
             hdfs-worker02.lab.example.com
-    
-       [namenode]
+    [namenode]
           hdfs-master.lab.example.com
-    
-        [servers:children]
-    datanodes
-    namenode
-    
+    [servers:children]
+    	datanodes
+    	namenode
     [servers:vars]
-    ansible_ssh_user=YOUR-USER
-    ansible_become=true
-    ansible_ssh_private_key_file=~/.ssh/YOUR-KEY
-    ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+    	ansible_ssh_user=YOUR-USER
+    	ansible_become=true
+    	ansible_ssh_private_key_file=~/.ssh/YOUR-KEY
+    	ansible_ssh_common_args='-o StrictHostKeyChecking=no'
  
 
-##### 2)  install all the required prerequisites and packages
+2)  install all the required prerequisites and packages
 `ansible-playbook -i inventory hadoop.yml -t preinstall`
 
-##### 3) perform hardening and tuning
+3) perform hardening and tuning
 `ansible-playbook -i inventory hadoop.yml -t hardening`
 
-#####** before installing the ansible hadoop role  and perform the below : On Master-node**
-
-
+before installing the ansible hadoop role  and perform the below : On Master-node
 
     sudo -i
     passwd hadoop # configure user "hadoop: password
