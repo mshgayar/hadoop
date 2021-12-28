@@ -20,9 +20,9 @@ Installation Prerequisites
 ```
 
 [========]
-#### 1) cloning ansible files
- - `git clone https://github.com/mshgayar/hadoop.git`
-#  - `vim inventory`
+### 1) cloning ansible files
+ 	- `git clone https://github.com/mshgayar/hadoop.git`
+  	- `vim inventory`
  
 
     [datanodes]
