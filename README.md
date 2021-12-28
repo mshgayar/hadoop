@@ -2,10 +2,11 @@
 ### Hadoop Cluster Installation
 The current installation has been implemented based on :
 
-   -	 Centos 7
+   -	Centos 7
    -	Hadoop version 3.3.1
 
 Installation Prerequisites
+
 	-     Three Virtual Machines installed with Centos 7
 	-     From your Ansible Control Machine(Your PC), you should have ssh key with sudo user to install the cluster
 	-     Configure hostnames through your own DNS or /etc/hosts :
