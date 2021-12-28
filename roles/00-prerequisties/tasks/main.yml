@@ -1,0 +1,56 @@
+- name: update full system packages
+  yum: name="*" state=latest
+  tags:
+    - preinstall
+
+- name: Install prerequisties - required packages
+  yum:
+    name: ['git','firewalld','NetworkManager', 'wget', 'bash-completion', 'vim', 'java-openjdk', 'java-devel', 'java','bind-utils','NetworkManager-tui']
+    state: present
+  tags:
+    - preinstall
+
+- name: configure ssh server to allow password login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "PasswordAuthentication no"
+    line: "PasswordAuthentication yes"
+    state: present
+    backup: yes
+  tags:
+    - preinstall
+
+- name: update hostnames as per inventory hostnames
+  hostname: name={{ inventory_hostname }} use=systemd
+  tags:
+    - preinstall
+
+- name: disable firewall service
+  service: name=firewalld state=stopped enabled=false
+  tags:
+    - preinstall
+
+- name: disable selinux
+  selinux:
+    state: disabled
+  register: task_result
+  tags:
+    - preinstall
+
+- name: Reboot immediately to apply selinux status as disabled.
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  when: task_result is changed
+  tags:
+    - preinstall
+
+- name: Wait for the reboot to complete if there was a change.
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: task_result is changed
+  tags:
+    - preinstall

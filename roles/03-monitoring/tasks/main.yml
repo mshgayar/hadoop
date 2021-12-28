@@ -1,0 +1,19 @@
+---
+# This Task should be run with normal user hadoop who has the ownership of the hadoop configuration files, so we are using become, become_method and become_user
+- name: monitoring cluster status
+  become: true
+  become_method: su
+  become_user: hadoop
+  shell: /opt/hadoop/bin/hdfs dfsadmin -report
+  register: cluster_node_status
+  tags:
+    - monitor
+  when: inventory_hostname in groups['namenode']
+
+- name: display monitor status
+  remote_user: hadoop
+  debug:
+    var: cluster_node_status.stdout_lines
+  when: inventory_hostname in groups['namenode']
+  tags:
+    - monitor

@@ -1,0 +1,11 @@
+---
+- name: Hadoop Cluster Installation
+  hosts: all
+  ignore_errors: yes
+  roles:
+    - 00-prerequisties
+    - 01-secuirty-hardening
+    - 02-hadoop-cluster-installation
+    - 03-monitoring
+    - 04-test-tasks
+    - 05-reset-cluster

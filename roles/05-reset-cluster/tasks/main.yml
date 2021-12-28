@@ -1,0 +1,16 @@
+---
+- name: delete configuration files
+  file:
+    path: /opt/hadoop
+    state: absent
+  tags:
+    - reset
+
+- name: reconfigure user hadoop /home/hadoop/.profile
+  lineinfile:
+    path: /home/hadoop/.profile
+    regexp: '^PATH'
+    state: absent
+  tags:
+    - reset
+

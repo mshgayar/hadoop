@@ -1,0 +1,18 @@
+[datanodes]
+hdfs-worker01.lab.example.com
+hdfs-worker02.lab.example.com
+
+[namenode]
+hdfs-master.lab.example.com
+
+
+[servers:children]
+datanodes
+namenode
+
+
+[servers:vars]
+ansible_ssh_user=hadoop
+ansible_become=true
+ansible_ssh_private_key_file=~/.ssh/cloud-key
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

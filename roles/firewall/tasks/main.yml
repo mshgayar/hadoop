@@ -1,0 +1,31 @@
+#- name: Install firewalld service
+#  yum: name=firewalld state=present
+
+#- name: start and enable firewalld
+#  service: name=firewalld state=started enabled=yes
+
+#- name: allow hadoop ports
+#  firewalld:
+#    port: "{{item}}"
+#    permanent: true
+#    state: enabled
+#    immediate: yes
+#  loop:
+#    - 8088/tcp
+#    - 9870/tcp
+#    - 8020/tcp
+#    - 9864/tcp
+#    - 9867/tcp
+#    - 9866/tcp
+#    - 19888/tcp
+#    - 9000/tcp
+#    - 8042/tcp
+#    - 8043/tcp
+#    - 8084/tcp
+#    - 8188/tcp
+#    - 8190/tcp
+#    - 8089/tcp
+#    - 8091/tcp
+#    - 8088/tcp
+#    - 8090/tcp
+#    - 10033/tcp

@@ -1,0 +1,17 @@
+---
+- name: download the hadoop tarball version 3.3.1
+  get_url: url="https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz" dest=/home/hadoop/hadoop-3.3.1.tar.gz
+  tags:
+    - test
+
+
+- name: extract the hadoop tarball configuration files to /opt/hadoop
+  unarchive:
+    src: /home/hadoop/hadoop-3.3.1.tar.gz
+    dest: /opt/hadoop
+    extra_opts: [--strip-components=1]
+    remote_src: yes
+    owner: hadoop
+    group: hadoop
+  tags:
+    - test
