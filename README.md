@@ -13,6 +13,7 @@ Installation Prerequisites
 
 #### Cluster Nodes Resolution 
 `  vim /etc.hosts   `
+
      192.168.35.X  hdfs-master.lab.example.com 
      192.168.35.X  hdfs-worker01.lab.example.com
      192.168.35.X  hdfs-worker02.lab.example.com   
