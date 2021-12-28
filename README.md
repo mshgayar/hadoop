@@ -11,7 +11,8 @@ Installation Prerequisites
 	-     From your Ansible Control Machine(Your PC), you should have ssh key with sudo user to install the cluster
 	-     Configure hostnames through your own DNS or /etc/hosts :
 
-#### Cluster Nodes Resolution 
+### Cluster Nodes Resolution 
+
 `  vim /etc.hosts   `
 
      192.168.35.X  hdfs-master.lab.example.com 
@@ -19,7 +20,6 @@ Installation Prerequisites
      192.168.35.X  hdfs-worker02.lab.example.com   
 ```
 
-[========]
 ### 1) cloning ansible files
  	- `git clone https://github.com/mshgayar/hadoop.git`
   	- `vim inventory`
