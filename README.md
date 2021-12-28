@@ -58,9 +58,9 @@ before installing the ansible hadoop role  and perform the below : On Master-nod
     ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop@hdfs-worker02.lab.example.com -f
 	
 
-##### 4) Install the hadoop cluster & initialize hdfs and all services
+4) Install the hadoop cluster & initialize hdfs and all services
 `ansible-playbook -i inventory hadoop.yml -t hadoop`
-##### 5) access the cluster : 
+5) access the cluster : 
 
     From browser : http://hdfs-master.lab.example.com:9870/
     or you can use the monitoring ansilbe role
